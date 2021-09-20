@@ -4,4 +4,13 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
     <bean id="Sim" class="com.example.practice.IOC.Airtel"></bean>
+    <bean id="student" class="com.example.practice.dependencyInjection.Student">
+        <property name="studentName" value="John"></property>
+        <property name="studentId" value="1"></property>
+    </bean>
+    <bean id="Jack" class="com.example.practice.dependencyInjection.Student">
+        <property name="studentName" value="Jack"></property>
+        <property name="studentId" value="2"></property>
+    </bean>
+
 </beans>
