@@ -14,4 +14,28 @@
         <constructor-arg name="studentId" value="1" type="int"/>
     </bean>
 
+    <!--setter injection-->
+    <bean id="student1" class="com.example.practice.dependencyInjection.objects.Student">
+        <property name="id" value="1001"></property>
+        <property name="mathCheat">
+            <bean class="com.example.practice.dependencyInjection.objects.MathCheat"></bean>
+        </property>
+    </bean>
+
+    <!--constructor injection-->
+    <bean id="student2" class="com.example.practice.dependencyInjection.objects.Student">
+        <constructor-arg name="id" value="1002"></constructor-arg>
+        <constructor-arg name="mathCheat">
+            <bean class="com.example.practice.dependencyInjection.objects.MathCheat"></bean>
+        </constructor-arg>
+    </bean>
+
+    <bean id="mathCheatObj" class="com.example.practice.dependencyInjection.objects.MathCheat"></bean>
+
+    <!--using MathCheat object reference-->
+    <bean id="student3" class="com.example.practice.dependencyInjection.objects.Student">
+        <property name="id" value="1003"></property>
+        <property name="mathCheat" ref="mathCheatObj"></property>
+    </bean>
+
 </beans>
