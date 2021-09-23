@@ -6,22 +6,14 @@ public class Student {
         We are adding this dependency using the setter method
          */
     private int id;
-    private MathCheat mathCheat;
+    private Cheat cheat;
+
     public void cheating(){
-        mathCheat.mathCheat(id);
+        cheat.cheatingStart(id);
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setMathCheat(MathCheat mathCheat) {
-        this.mathCheat = mathCheat;
-    }
-    public Student(){}
-
-    public Student(int id, MathCheat mathCheat){
+    public Student(int id, Cheat cheat){
         this.id=id;
-        this.mathCheat=mathCheat;
+        this.cheat=cheat;
     }
 }
