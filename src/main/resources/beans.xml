@@ -39,4 +39,14 @@
         <constructor-arg name="cheat" ref="scienceCheatObj"></constructor-arg>
     </bean>
 
+    <!--
+    id needs to be heart and match variable name in body class
+    so that autowire="byName" works
+    this requires the setter method
+    -->
+    <bean id="heartObj" class="com.example.practice.autowire.Heart"></bean>
+    <bean id="human" class="com.example.practice.autowire.Human" autowire="byName">
+      <!--<property name="heart" ref="heartObj"></property> -->
+    </bean>
+
 </beans>
