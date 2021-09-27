@@ -43,9 +43,11 @@
     id needs to be heart and match variable name in body class
     so that autowire="byName" works
     this requires the setter method
+    if id and reference variable name does not match, but their types match,
+    then use autowire="byType" to inject the object
     -->
     <bean id="heartObj" class="com.example.practice.autowire.Heart"></bean>
-    <bean id="human" class="com.example.practice.autowire.Human" autowire="byName">
+    <bean id="human" class="com.example.practice.autowire.Human" autowire="byType">
       <!--<property name="heart" ref="heartObj"></property> -->
     </bean>
 
