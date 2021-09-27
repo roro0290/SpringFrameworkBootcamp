@@ -47,7 +47,7 @@
     then use autowire="byType" to inject the object
     -->
     <bean id="heartObj" class="com.example.practice.autowire.Heart"></bean>
-    <bean id="human" class="com.example.practice.autowire.Human" autowire="byType">
+    <bean id="human" class="com.example.practice.autowire.Human" autowire="constructor">
       <!--<property name="heart" ref="heartObj"></property> -->
     </bean>
 

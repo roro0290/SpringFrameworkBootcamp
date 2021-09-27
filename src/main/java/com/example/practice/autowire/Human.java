@@ -13,6 +13,9 @@ public class Human {
         }else{
             System.out.println("you are dead");
         }
+    }
 
+    public Human(Heart heart) {
+        this.heart = heart;
     }
 }
