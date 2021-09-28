@@ -1,9 +1,13 @@
 package com.example.practice.autowire;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class Human {
     private Heart heart;
 
+    @Autowired
     public void setHeart(Heart heart) {
+        System.out.println("setter method is called");
         this.heart = heart;
     }
 
@@ -15,7 +19,11 @@ public class Human {
         }
     }
 
+    public Human(){}
+
+    //@Autowired
     public Human(Heart heart) {
         this.heart = heart;
+        System.out.println("human constructor is called");
     }
 }

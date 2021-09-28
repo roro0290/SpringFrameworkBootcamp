@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!--All these are namespace locations that must be included so that the tags can work-->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     <bean id="Sim" class="com.example.practice.IOC.Airtel"></bean>
 
     <bean id="Jack" class="com.example.practice.dependencyInjection.Student">
@@ -46,8 +48,11 @@
     if id and reference variable name does not match, but their types match,
     then use autowire="byType" to inject the object
     -->
-    <bean id="heartObj" class="com.example.practice.autowire.Heart"></bean>
-    <bean id="human" class="com.example.practice.autowire.Human" autowire="constructor">
+    <context:annotation-config/> <!--include this tag to activate annotations-->
+
+    <bean id="humanHeart" class="com.example.practice.autowire.Heart"></bean>
+    <bean id="octopusHeart" class="com.example.practice.autowire.Heart"></bean>
+    <bean id="human" class="com.example.practice.autowire.Human">
       <!--<property name="heart" ref="heartObj"></property> -->
     </bean>
 
