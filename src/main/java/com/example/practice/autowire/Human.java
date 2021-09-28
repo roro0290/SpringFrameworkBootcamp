@@ -1,11 +1,15 @@
 package com.example.practice.autowire;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 public class Human {
+    @Autowired
+    @Qualifier("humanHeart")
     private Heart heart;
 
-    @Autowired
+    //@Autowired
+    //@Qualifier("humanHeart")
     public void setHeart(Heart heart) {
         System.out.println("setter method is called");
         this.heart = heart;

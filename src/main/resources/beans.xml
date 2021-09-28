@@ -50,8 +50,14 @@
     -->
     <context:annotation-config/> <!--include this tag to activate annotations-->
 
-    <bean id="humanHeart" class="com.example.practice.autowire.Heart"></bean>
-    <bean id="octopusHeart" class="com.example.practice.autowire.Heart"></bean>
+    <bean id="humanHeart" class="com.example.practice.autowire.Heart">
+        <property name="nameOfAnimal" value="human"></property>
+        <property name="noOfHeart" value="1"></property>
+    </bean>
+    <bean id="octopusHeart" class="com.example.practice.autowire.Heart">
+        <property name="nameOfAnimal" value="octopus"></property>
+        <property name="noOfHeart" value="3"></property>
+    </bean>
     <bean id="human" class="com.example.practice.autowire.Human">
       <!--<property name="heart" ref="heartObj"></property> -->
     </bean>
