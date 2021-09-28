@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!--All these are namespace locations that must be included so that the tags can work-->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     <bean id="Sim" class="com.example.practice.IOC.Airtel"></bean>
 
     <bean id="Jack" class="com.example.practice.dependencyInjection.Student">
@@ -14,7 +16,7 @@
         <constructor-arg name="studentId" value="1" type="int"/>
     </bean>
 
-    <!--setter injection-->
+    <!--setter injection
     <bean id="student1" class="com.example.practice.dependencyInjection.objects.Student">
         <property name="id" value="1001"></property>
         <property name="mathCheat">
@@ -22,20 +24,42 @@
         </property>
     </bean>
 
-    <!--constructor injection-->
+    constructor injection
     <bean id="student2" class="com.example.practice.dependencyInjection.objects.Student">
         <constructor-arg name="id" value="1002"></constructor-arg>
         <constructor-arg name="mathCheat">
             <bean class="com.example.practice.dependencyInjection.objects.MathCheat"></bean>
         </constructor-arg>
+    </bean>-->
+
+    <!--using cheat object reference-->
+    <bean id="mathCheatObj" class="com.example.practice.dependencyInjection.objects.MathCheat"></bean>
+    <bean id="scienceCheatObj" class="com.example.practice.dependencyInjection.objects.ScienceCheat"></bean>
+
+    <bean id="student1" class="com.example.practice.dependencyInjection.objects.Student">
+        <constructor-arg name="id" value="1001"></constructor-arg>
+        <constructor-arg name="cheat" ref="scienceCheatObj"></constructor-arg>
     </bean>
 
-    <bean id="mathCheatObj" class="com.example.practice.dependencyInjection.objects.MathCheat"></bean>
+    <!--
+    id needs to be heart and match variable name in body class
+    so that autowire="byName" works
+    this requires the setter method
+    if id and reference variable name does not match, but their types match,
+    then use autowire="byType" to inject the object
+    -->
+    <context:annotation-config/> <!--include this tag to activate annotations-->
 
-    <!--using MathCheat object reference-->
-    <bean id="student3" class="com.example.practice.dependencyInjection.objects.Student">
-        <property name="id" value="1003"></property>
-        <property name="mathCheat" ref="mathCheatObj"></property>
+    <bean id="humanHeart" class="com.example.practice.autowire.Heart">
+        <property name="nameOfAnimal" value="human"></property>
+        <property name="noOfHeart" value="1"></property>
+    </bean>
+    <bean id="octopusHeart" class="com.example.practice.autowire.Heart">
+        <property name="nameOfAnimal" value="octopus"></property>
+        <property name="noOfHeart" value="3"></property>
+    </bean>
+    <bean id="human" class="com.example.practice.autowire.Human">
+      <!--<property name="heart" ref="heartObj"></property> -->
     </bean>
 
 </beans>
