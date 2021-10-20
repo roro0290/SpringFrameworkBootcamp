@@ -4,37 +4,23 @@ import org.springframework.beans.factory.annotation.Required;
 import org.springframework.beans.factory.annotation.Value;
 
 public class Student {
+    @Value("${student.name}") //by using annotation here, setter method is not needed
     private String name;
+    @Value("${student.interestedCourse}")
     private String interestedCourse;
+    @Value("${student.hobby}")
     private String hobby;
 
     public String getName() {
         return name;
     }
 
-    @Required
-    @Value("${student.name}")
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getInterestedCourse() {
         return interestedCourse;
     }
 
-    @Required
-    @Value("${student.interestedCourse}")
-    public void setInterestedCourse(String interestedCourse) {
-        this.interestedCourse = interestedCourse;
-    }
-
     public String getHobby() {
         return hobby;
-    }
-
-    @Value("${student.hobby}")
-    public void setHobby(String hobby) {
-        this.hobby = hobby;
     }
 
     public void displayStudentInfo(){
