@@ -1,5 +1,6 @@
 package com.example.practice.loadFromPropertiesFile;
 
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.beans.factory.annotation.Value;
 
 public class Student {
@@ -11,6 +12,8 @@ public class Student {
         return name;
     }
 
+    @Required
+    @Value("${student.name}")
     public void setName(String name) {
         this.name = name;
     }
@@ -19,6 +22,8 @@ public class Student {
         return interestedCourse;
     }
 
+    @Required
+    @Value("${student.interestedCourse}")
     public void setInterestedCourse(String interestedCourse) {
         this.interestedCourse = interestedCourse;
     }
@@ -27,6 +32,7 @@ public class Student {
         return hobby;
     }
 
+    @Value("${student.hobby}")
     public void setHobby(String hobby) {
         this.hobby = hobby;
     }
