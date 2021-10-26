@@ -18,7 +18,9 @@ public class CollegeConfig {
     //unless you specify
     public College collegeBean(){
         //this method will return a college object
-        return new College(principalObj());
+        College c = new College();
+        c.setPrincipal(principalObj());
+        return c;
     }
 
 }

@@ -10,12 +10,16 @@ public class College {
     //college has a dependency on principal
     private Principal principal;
 
-    /*public College(){
+    public College(){
         System.out.println("college no principal");
-    }*/
+    }
 
     //create a simple constructor for dependency inection
     public College(Principal principal) {
+        this.principal = principal;
+    }
+
+    public void setPrincipal(Principal principal) {
         this.principal = principal;
     }
 
