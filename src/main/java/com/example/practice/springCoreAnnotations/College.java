@@ -1,8 +1,9 @@
 package com.example.practice.springCoreAnnotations;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-@Component("collegeBean")
+//@Component("collegeBean")
 public class College {
     public College(){
         System.out.println("college created");
