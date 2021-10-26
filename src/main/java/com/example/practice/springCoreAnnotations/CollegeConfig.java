@@ -3,9 +3,11 @@ package com.example.practice.springCoreAnnotations;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @ComponentScan(basePackages = "com.example.practice.springCoreAnnotations")
+@PropertySource("classpath:collegeInfo.properties")
 public class CollegeConfig {
 
     //@Bean

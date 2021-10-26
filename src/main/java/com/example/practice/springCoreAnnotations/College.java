@@ -12,7 +12,7 @@ public class College {
 
     //college has a dependency on principal
 
-    @Value("Selenium Express")
+    @Value("${college.name}")
     private String collegeName;
     @Autowired
     private Principal principal;
