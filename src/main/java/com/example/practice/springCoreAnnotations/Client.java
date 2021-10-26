@@ -9,6 +9,6 @@ public class Client {
         ApplicationContext context = new AnnotationConfigApplicationContext(CollegeConfig.class);
         System.out.println("beans.xml file loaded");
         College c = context.getBean("colBean",College.class);
-        c.getName();
+        c.test();
     }
 }
