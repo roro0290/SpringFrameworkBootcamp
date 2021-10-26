@@ -5,15 +5,15 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-//@ComponentScan(basePackages = "com.example.practice.springCoreAnnotations")
+@ComponentScan(basePackages = "com.example.practice.springCoreAnnotations")
 public class CollegeConfig {
 
-    @Bean
+    //@Bean
     public Principal principalObj(){
         return new Principal();
     } //pass this method in collegeBean
 
-    @Bean
+    //@Bean
     public Teacher mathTeacherObj(){
         return new MathTeacher();
     }

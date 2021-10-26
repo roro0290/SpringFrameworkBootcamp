@@ -1,5 +1,8 @@
 package com.example.practice.springCoreAnnotations;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class MathTeacher implements Teacher{
 
     @Override
