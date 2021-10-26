@@ -10,6 +10,13 @@ public class College {
     //college has a dependency on principal
     private Principal principal;
 
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    private Teacher teacher;
+
+
     public College(){
         System.out.println("college no principal");
     }
@@ -25,6 +32,7 @@ public class College {
 
     public void test(){
         principal.principalInfo();
+        teacher.teach();
         System.out.println("testing methods");
     }
 }

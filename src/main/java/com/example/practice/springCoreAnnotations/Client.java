@@ -6,9 +6,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Client {
     public static void main(String[] args) {
-        ApplicationContext context = new AnnotationConfigApplicationContext(CollegeConfig.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(CollegeConfig.class);
         System.out.println("beans.xml file loaded");
         College c = context.getBean("colBean",College.class);
         c.test();
+        context.close();
     }
 }
