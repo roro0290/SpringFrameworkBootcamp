@@ -1,6 +1,7 @@
 package com.example.practice.springCoreAnnotations;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -10,6 +11,9 @@ import org.springframework.stereotype.Component;
 public class College {
 
     //college has a dependency on principal
+
+    @Value("Selenium Express")
+    private String collegeName;
     @Autowired
     private Principal principal;
     @Autowired
@@ -36,6 +40,7 @@ public class College {
     public void test(){
         principal.principalInfo();
         teacher.teach();
+        System.out.println("my college name is "+collegeName);
         System.out.println("testing methods");
     }
 }
