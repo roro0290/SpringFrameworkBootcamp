@@ -6,6 +6,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.sql.*;
 
 
@@ -25,16 +26,17 @@ public class StudentDAO {
     PreparedStatement pst = null;
 
     @PostConstruct
+    public void init() throws SQLException {
+        //we can define multiple methods in startup
+        createConnection();
+    }
+
     public void createConnection() throws SQLException {
         //get a connection. must provide url, username and password to establish the connection
         conn = DriverManager.getConnection(url, username, password);
 
         //execute a query
         stmt = conn.createStatement();
-    }
-
-    public void closeConnection() throws SQLException {
-        conn.close();
     }
 
     //to fetch all the rows from the table
@@ -50,13 +52,11 @@ public class StudentDAO {
             String food_type = rs.getString(4);
             System.out.printf("%d %s %.2f %s %n", studentId, studentName, hostelfee, food_type);
         }
-        closeConnection();
     }
 
     public void deleteStudentRecord(int studentId) throws SQLException {
         stmt.executeUpdate("DELETE FROM rohinidb.hostelStudentInfo WHERE student_id=" + studentId);
         System.out.println("record deleted");
-        closeConnection();
     }
 
     public void addStudentRecord(int studentId, String studentName, double hostelFee, String foodType) throws SQLException {
@@ -67,7 +67,17 @@ public class StudentDAO {
         pst.setDouble(3, hostelFee);
         pst.setString(4, foodType);
         pst.executeUpdate();
+    }
+
+    @PreDestroy
+    public void destroy() throws SQLException {
+        //destroy() method used to clean up
         closeConnection();
+    }
+
+    public void closeConnection() throws SQLException {
+        System.out.println("destroy");
+        conn.close();
     }
 
 }
