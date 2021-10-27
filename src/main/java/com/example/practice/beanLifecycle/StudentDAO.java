@@ -1,13 +1,23 @@
 package com.example.practice.beanLifecycle;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
+
 import java.sql.*;
 
+
+@Component
 public class StudentDAO {
 
     //private String driver = "com.mysql.jdbc.driver";
-    private String url = "jdbc:mysql://localhost:3306/rohinidb";
-    private String username = "root";
-    private String password = "RohiniMySqlPassword123!!!";
+    @Value("${jdbc.url}")
+    private String url;
+    @Value("${jdbc.username}")
+    private String username;
+    @Value("${jdbc.password}")
+    private String password;
 
     Connection conn = null;
     Statement stmt = null;
@@ -19,6 +29,10 @@ public class StudentDAO {
 
         //execute a query
         stmt = conn.createStatement();
+    }
+
+    public void closeConnection() throws SQLException {
+        conn.close();
     }
 
     //to fetch all the rows from the table
@@ -36,12 +50,15 @@ public class StudentDAO {
             String food_type = rs.getString(4);
             System.out.printf("%d %s %.2f %s %n",studentId, studentName, hostelfee, food_type);
         }
+
+        closeConnection();
     }
 
     public void deleteStudentRecord(int studentId) throws SQLException {
         createConnection();
         stmt.executeUpdate("DELETE FROM rohinidb.hostelStudentInfo WHERE student_id="+ studentId);
         System.out.println("record deleted");
+        closeConnection();
     }
 
     public void addStudentRecord(int studentId,String studentName, double hostelFee, String foodType) throws SQLException {
@@ -53,8 +70,7 @@ public class StudentDAO {
         pst.setDouble(3,hostelFee);
         pst.setString(4,foodType);
         pst.executeUpdate();
-
-        System.out.println("record added");
+        closeConnection();
     }
 
 }
