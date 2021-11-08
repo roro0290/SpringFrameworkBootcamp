@@ -1,0 +1,11 @@
+myDatasource:
+  url: superUrl
+  password: superPassword
+  username: superuser
+
+  ---
+  
+  myDatasource:
+    url: prodUrl
+    password: prodPassword
+    username: produser

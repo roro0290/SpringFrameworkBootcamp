@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    active: cat,dev
+
+server:
+  port: 8082
