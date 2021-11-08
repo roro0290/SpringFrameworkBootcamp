@@ -12,11 +12,18 @@ import org.springframework.context.annotation.Profile;
 @SpringBootApplication
 public class ApplicationClass implements CommandLineRunner {
 
-    @Autowired
-    private Animal animal;
+
     public static void main(String[] args) {
         SpringApplication.run(ApplicationClass.class,args);
     }
+
+    @Override
+    public void run(String... args) throws Exception {
+
+    }
+
+    /*@Autowired
+    private Animal animal;
 
     @Override
     public void run(String... args) throws Exception{
@@ -28,5 +35,5 @@ public class ApplicationClass implements CommandLineRunner {
     @Bean
     public Cat catOb(){
         return new Cat();
-    }
+    }*/
 }
