@@ -1,0 +1,4 @@
+myDatasource:
+  url: superUrl
+  password: superPassword
+  username: superuser
